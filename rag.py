@@ -1,11 +1,19 @@
 import os
 import time
+import streamlit as st
 from dotenv import load_dotenv
 from google import genai
 from ingest import load_documents, build_index
 
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+def get_api_key():
+    try:
+        return st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        return os.getenv("GEMINI_API_KEY")
+
+client = genai.Client(api_key=get_api_key())
 
 
 def build_context(search_results):
