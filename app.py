@@ -137,8 +137,10 @@ if st.session_state.view == "chat":
                     except Exception as e:
                         st.exception(e)
                         result = {"answer": "Something went wrong generating a response. Please try again.",
-                                  "input_tokens": 0, "output_tokens": 0, "response_time": 0}
+                                  "input_tokens": 0, "output_tokens": 0, "response_time": 0, "sources": []}
                 st.write(result["answer"])
+                if result.get("sources"):
+                    st.caption(f"📄 Source: {', '.join(result['sources'])}")
 
             st.session_state.messages.append({"role": "assistant", "content": result["answer"]})
 

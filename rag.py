@@ -23,6 +23,7 @@ def rag(question, index, history=None):
 
     search_results = index.search(search_query, num_results=3)
     context = build_context(search_results)
+    sources = list(set(r["source"] for r in search_results))
 
     history_text = ""
     if history:
@@ -61,6 +62,7 @@ ANSWER:
                 "input_tokens": usage.prompt_token_count,
                 "output_tokens": usage.candidates_token_count,
                 "response_time": elapsed,
+                "sources": sources,
             }
         except Exception as e:
             print(f"--- Gemini API error (attempt {attempt+1}) ---")
@@ -74,6 +76,7 @@ ANSWER:
                     "input_tokens": 0,
                     "output_tokens": 0,
                     "response_time": elapsed,
+                    "sources": [],
                 }
 
 if __name__ == "__main__":
