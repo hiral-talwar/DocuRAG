@@ -2,7 +2,7 @@
 
 **DocuRAG** is a retrieval-augmented generation (RAG) assistant that lets you upload any document — PDF, Word, or text — and ask questions about it in a chat interface. Answers are generated using only the content actually retrieved from your document, with source citations, instead of relying on the AI's general knowledge or risking hallucination.
 
-🚀 **Live App:** https://docurag-kig5.onrender.com
+                                                🚀 **Live App:** https://docurag-kig5.onrender.com
 
 *(Free-tier hosting — the app may take 30-60 seconds to wake up if it's been idle.)*
 
